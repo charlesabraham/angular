@@ -5,18 +5,41 @@
 
 <body>
 
-<div ng-app="">
+<div ng-app="myapp" ng-init="first='John';quantity='1';cost='5'" ng-controller="myCntrl"
 <p>write someting</p>
 
 <input type ="text" ng-model="name" placeholder = "Enter name here">
 
-<p>
-<h3>
-Hello {{name}}
-</h3>
-</p>
+<p> Total in dollar : {{quantity*cost}}</p>
+
+<p ng-bind="name"></p>
+<br/>
+{{name}}
+<hr/>
+
+<p>The name is <span ng-bind="first"></span></p>
+<hr/>
+
+<p>My first expression is {{5*5}}.</p>
+
+
+Firstname : <input type="text" ng-model="firstname">
+Lastname  : <input type="text" ng-model="lastname">
+
+<br/>
+Fullname : {{firstname + " " +lastname}}
 </div>
 
+
+<script>
+var app = angular.module('myapp',[]);
+app.controller('myCntrl',function($scope){
+
+$scope.firstname="John";
+$scope.lastname="Doe";
+});
+
+</script>
 </body>
 
 </html>

@@ -5,13 +5,13 @@
 
 <body>
 
-<div ng-app="myapp" ng-init="first='John';quantity='1';cost='5'" ng-controller="myCntrl"
+<div ng-app="myapp" ng-init="first='John';quantity='1';cost='5'; points=[1,15,20,25]; names=['ca','airforce','marine']; combo=[{name:'jani',country:'India'},{name:'charles',country:'Austria'},{name:'Poll',country:'england'}] " ng-controller="myCntrl"
 <p>write someting</p>
 
 <input type ="text" ng-model="name" placeholder = "Enter name here">
 
 <p> Total in dollar : {{quantity*cost}}</p>
-
+<p> Second result array is {{points[2]}}</p>
 <p ng-bind="name"></p>
 <br/>
 {{name}}
@@ -28,8 +28,17 @@ Lastname  : <input type="text" ng-model="lastname">
 
 <br/>
 Fullname : {{firstname + " " +lastname}}
-</div>
 
+<p>
+<ul>
+<li ng-repeat="x in names">
+{{x}}
+</li>
+</ul>
+</p>
+
+
+<!--</div>-->
 
 <script>
 var app = angular.module('myapp',[]);
@@ -40,6 +49,22 @@ $scope.lastname="Doe";
 });
 
 </script>
+
+<!--<div data-ng-app="" data-ng-init="combo=[
+{name:'jani',country:'India'},
+{name:'charles',country:'Austria'},
+{name:'Poll',country:'england'}]">
+-->
+
+<ul>
+<li ng-repeat="x in combo">
+{{ x.name + ", " + x.country }} 
+</li>
+</ul>
+
+</div>
+
+
 </body>
 
 </html>

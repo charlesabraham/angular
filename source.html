@@ -1,0 +1,61 @@
+<html>
+
+<head>
+
+<style>
+table, th , td {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+</style>
+
+
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+</head>
+
+<body>
+
+<div ng-app="myapp" ng-controller="mycontrol">
+
+<input type="text" ng-model="data">
+
+<table>
+<th>#</th>
+<th>AccessLevel</th>
+<th>Title</th>
+<th>Publisher Name</th>
+<tr ng-repeat="x in names | orderBy:'firstName' | filter:data">
+
+<td> {{ $index+1 }} </td>
+<td>{{ x.accessLevel }} </td>
+<td>{{ x.title }} </td>
+<td>{{ x.publisher.name }} </td>
+</tr>
+</table>
+
+
+</div>
+
+<script>
+
+var app = angular.module('myapp' , []);
+app.controller('mycontrol', function($scope, $http){
+$http.get('https://project-open-data.cio.gov/v1.1/examples/catalog-sample.json')
+.success(function(response) {$scope.names = response.dataset;})
+}
+
+);
+</script>
+
+
+</body>
+
+
+</html>

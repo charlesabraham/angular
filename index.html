@@ -5,7 +5,7 @@
 
 <body>
 
-<div ng-app="myapp" ng-init="first='John';quantity='1';cost='5'; points=[1,15,20,25]; names=['ca','airforce','marine']; combo=[{name:'jani',country:'India'},{name:'charles',country:'Austria'},{name:'Poll',country:'england'}] " ng-controller="Myco"
+<div ng-app="myapp" ng-init="first='John';quantity='1';cost='5'; points=[1,15,20,25]; names=['ca','airforce','marine']" ng-controller="myCntrl"
 <p>write someting</p>
 
 <input type ="text" ng-model="name" placeholder = "Enter name here">
@@ -20,25 +20,25 @@
 <p>The name is <span ng-bind="first"></span></p>
 <hr/>
 
-<p>My first expression is {{5*5 | currency}}.</p>
+<p>My first expression is {{5*5}}.</p>
 
 
 Firstname : <input type="text" ng-model="firstname">
 Lastname  : <input type="text" ng-model="lastname">
 
 <br/>
-Fullname : {{firstname + " " +lastname | uppercase}}
+Fullname : {{firstname + " " +lastname}}
 
 <p>
 <ul>
 <li ng-repeat="x in names">
-{{x | uppercase}}
+{{x}}
 </li>
 </ul>
 </p>
 
 
-<!--</div>-->
+</div>
 
 <script>
 var app = angular.module('myapp',[]);
@@ -50,55 +50,17 @@ $scope.lastname="Doe";
 
 </script>
 
-<!--<div data-ng-app="" data-ng-init="combo=[
+<div data-ng-app="" data-ng-init="names=[
 {name:'jani',country:'India'},
 {name:'charles',country:'Austria'},
 {name:'Poll',country:'england'}]">
--->
+
 
 <ul>
-<li ng-repeat="x in combo">
+<li data-ng-repeat="x in names">
 {{ x.name + ", " + x.country }} 
 </li>
 </ul>
-
-
-Enter a digit  : <input type="text" ng-model="digit" >
-
-
-<script>
-var app = angular.module('myapp',[]);
-app.controller('Myco',function($scope){
-
-$scope.digit="5";
-
-});
-
-</script>
-
-
-
-
-
-
-<!--
-<ul>
-<li ng-repeat="x in digit">
-{{x.digit + " X "}}
-</li>
-</ul>
--->
-
-
-<table>
-<tr ng-repeat="x in points | filter:digit">
-<td>Repeated {{x}} </td>	
-
-
-</tr>
-</table>
-
-
 
 </div>
 
